@@ -1,0 +1,42 @@
+/**
+ * Sample business network definition.
+ */
+namespace org.foodfast.reputation
+
+enum DeliveryState {
+o RECEIVED
+o DELIVERED
+o CANCELLED
+}
+
+/** 
+ * The asset is the food order
+ */
+asset FoodOrder identified by orderId {
+  o String orderId
+  --> Restaurant owner
+  o Integer orderTime
+  o Integer deliveryTime
+  o DeliveryState deliveryStatus
+}
+
+/**
+ * A participant is the restaurant
+ */
+participant Restaurant identified by restaurantId {
+  o String restaurantId
+  o String restaurantName
+}
+
+transaction FoodTransaction {
+  --> FoodOrder order
+  o Integer deliveryTime
+  o DeliveryState deliveryStatus
+}
+
+event FoodEvent {
+  --> FoodOrder order
+  o Integer t_deliveryTime
+  o DeliveryState t_deliveryStatus
+}
+
