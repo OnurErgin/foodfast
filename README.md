@@ -14,7 +14,7 @@ This business network defines:
 `Restaurant`
 
 **Asset**
-`FoodORder`
+`FoodOrder`
 
 **Transaction**
 `FoodTransaction`
